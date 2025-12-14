@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="お問い合わせありがとうございます。">
+  <title>お問い合わせありがとうございます</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1800963877227558');
+  fbq('track', 'PageView');
+  fbq('track', 'Lead');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1800963877227558&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body class="bg-[#fefcf3] text-[#1a120b] font-['Space_Grotesk','Noto_Sans_JP',sans-serif]">
+
+  <main class="min-h-[80vh] grid place-items-center">
+    <div class="w-[min(560px,90vw)] bg-[#fffaf2] border border-[#e9d8c3] rounded-[18px] p-7 text-center shadow-sm">
+      <h1 class="text-2xl font-semibold mt-2 mb-2"><span id="thanks-name"></span>送信が完了しました</h1>
+      <p class="text-[#2f241a] font-semibold m-0">質問へのご回答ありがとうございました。</p>
+      <p class="text-[#4b3c2f] m-0 mt-2">内容を確認し、当日～3営業日以内に以下の電話番号もしくはメールからご連絡いたします。</p>
+      <div class="mt-4 w-full text-left bg-white/90 border border-[#f1a532]/30 rounded-2xl p-4 space-y-2">
+        <p class="m-0 text-[#1a120b] font-medium">電話番号：</p>
+        <p class="m-0 text-[#1a120b] font-medium">メールアドレス：<span class="font-normal">info@solani.co.jp</span></p>
+      </div>
+      <p id="thanks-topic" class="text-[#4b5563] m-0 mt-3"></p>
+      <div class="flex justify-center gap-3 mt-5 flex-wrap">
+        <a class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold border border-[#e5e7eb] text-[#1a120b] bg-white hover:border-black/20 transition-colors duration-200" href="index.html">トップへ戻る</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const topic = params.get("topic");
+    const nameEl = document.getElementById("thanks-name");
+    const topicEl = document.getElementById("thanks-topic");
+
+    if (name) {
+      nameEl.textContent = `${name} さん、`;
+    }
+
+    if (topic) {
+      const map = {
+        lp: "LP 制作・改善",
+        brand: "ブランドトンマナ整理",
+        ads: "広告クリエイティブ連動",
+        other: "その他の相談"
+      };
+      topicEl.textContent = `ご相談カテゴリ: ${map[topic] || topic}`;
+    } else {
+      topicEl.textContent = "";
+    }
+  </script>
+</body>
+</html>
